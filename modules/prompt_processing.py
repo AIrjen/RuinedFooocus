@@ -4,6 +4,7 @@ import random
 import json
 
 from modules.sdxl_styles import apply_style, allstyles
+from modules.ollama_processor import mad_libs
 from random_prompt.build_dynamic_prompt import (
     build_dynamic_prompt,
     build_dynamic_negative,
@@ -252,6 +253,11 @@ def process_prompt(style, prompt, negative, gen_data=[]):
             base_model=gen_data["OBP_modeltype"],
             prompt_enhancer=gen_data["OBP_promptenhance"],
         )
+
+    #mad libs through ollama
+    if("_____" in prompt):
+        prompt = mad_libs(prompt)
+        print("Madlibbed prompt: " + prompt)
 
     # styles
     pattern = re.compile(r"<style:([^>]+)>")

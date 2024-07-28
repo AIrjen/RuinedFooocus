@@ -23,3 +23,4 @@ kornia==0.7.2
 sentencepiece==0.2.0
 spandrel==0.3.4
 imageio[pyav]==2.34.1 
+ollama=0.3.0
